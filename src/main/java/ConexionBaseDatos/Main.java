@@ -4,6 +4,11 @@
  */
 package ConexionBaseDatos;
 
+import com.mysql.cj.jdbc.PreparedStatementWrapper;
+import java.sql.ResultSet;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author sotoc
@@ -12,5 +17,8 @@ public class Main {
   public static void main(String[] args) {
     CConexion objetoConexion=new CConexion();
    objetoConexion.establecerConexion();
-         }            
-}
+
+  
+   }
+  
+  }      

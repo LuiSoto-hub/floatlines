@@ -12,27 +12,28 @@ import javax.swing.JOptionPane;
  *
  * @author sotoc
  */
+
 public class CConexion {
-    Connection conectar =null;
-    String usuario="root";
-    String contrasenia="Joseluischavez5";
-    String bd="FloatLines";
-    String ip="localhost";
-    String puerto="3307";
+    Connection conectar = null;
+    String usuario = "root";
+    String contrasenia = "Joseluischavez5";
+    String bd = "FloatLines";
+    String ip = "localhost";
+    String puerto = "3306";
     
-    String cadena="jbdc:mysql://"+ip+":"+puerto+"/"+bd;
-    
-    public Connection establecerConexion(){
-    try{
-        Class.forName("com.mysql.jdb.Driver");
-        conectar=DriverManager.getConnection(cadena,usuario,contrasenia);
-        JOptionPane.showMessageDialog(null, "se conecto a la base de datos");
-        
-    }catch(Exception e){
-        JOptionPane.showMessageDialog(null, "error al conectar base de datos:"+e.toString());
-    }
-   return conectar;
-    
+    // Corrige el prefijo de la cadena JDBC
+    String cadena = "jdbc:mysql://" + ip + ":" + puerto + "/" + bd;
+
+    public Connection establecerConexion() {
+        try {
+            // Corrige el nombre del controlador
+            Class.forName("com.mysql.cj.jdbc.Driver"); 
+            conectar = DriverManager.getConnection(cadena, usuario, contrasenia);
+            //JOptionPane.showMessageDialog(null, "Se conectó a la base de datos correctamente.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al conectar a la base de datos: " + e.toString());
+        }
+        return conectar;
     }
 }
 
